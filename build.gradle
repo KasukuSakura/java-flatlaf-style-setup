@@ -13,6 +13,8 @@ allprojects {
         mavenCentral()
     }
 }
+description 'A tool for setup flatlaf'
+
 
 dependencies {
     def flatlafVer = '2.6'
