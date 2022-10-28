@@ -1,0 +1,4 @@
+rootProject.name = 'java-flatlaf-style-setup'
+
+
+include ':mirai'

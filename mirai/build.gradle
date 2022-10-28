@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'com.kasukusakura.kamiloply' version '0.0.9'
+}
+
+dependencies {
+    api rootProject
+
+    compileOnly 'com.kasukusakura.kamiloply:kamiloply-api:0.0.9'
+    compileOnly 'org.ow2.asm:asm-tree:9.4'
+
+    compileOnly 'net.mamoe:mirai-console:2.12.0'
+    compileOnly 'net.mamoe:mirai-core-api-jvm:2.12.0'
+}
+
+compileJava {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+jar {
+    from zipTree(rootProject.tasks.jar.outputs.files.singleFile)
+
+    archiveBaseName.set('java-flatlaf-style-setup')
+    archiveExtension.set('mirai2.jar')
+}
