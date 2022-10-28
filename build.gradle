@@ -41,24 +41,20 @@ task stubJavadoc(type: Jar) {
     archiveClassifier.set 'javadoc'
 }
 
-project(':mirai').afterEvaluate {
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = rootProject.group
+            artifactId = rootProject.name
+            version = rootProject.version
 
-    publishing {
-        publications {
-            maven(MavenPublication) {
-                groupId = rootProject.group
-                artifactId = rootProject.name
-                version = rootProject.version
+            from components.java
+            artifact rootProject.stubJavadoc
+            artifact sourcesJar
 
-                from rootProject.components.java
-                artifact rootProject.stubJavadoc
-                artifact sourcesJar
-                artifact project(':mirai').jar
-
-                pom { pom ->
-                    pom.name = rootProject.name
-                    pom.description = rootProject.description
-                }
+            pom { pom ->
+                pom.name = rootProject.name
+                pom.description = rootProject.description
             }
         }
     }

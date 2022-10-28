@@ -25,3 +25,5 @@ jar {
     archiveBaseName.set('java-flatlaf-style-setup')
     archiveExtension.set('mirai2.jar')
 }
+
+rootProject.extensions.getByName('publishing').publications.maven.artifact jar
